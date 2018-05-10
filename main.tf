@@ -1,9 +1,7 @@
 resource "aws_instance" "mbottini-webserver-1" {
   ami = "ami-43a15f3e"
   instance_type = "t2.micro"
-  #security_groups = ["${aws_security_group.allow_all.id}"]
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
-  #vpc_security_group_ids = ["${aws_security_group.allow_all.id}", "default"]
 
   provisioner "file" {
     source = "script.sh"
@@ -23,7 +21,7 @@ resource "aws_instance" "mbottini-webserver-1" {
 }
 
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "172.10.10.0/24"
 }
 
 resource "aws_security_group" "allow_all" {
@@ -36,7 +34,6 @@ resource "aws_security_group" "allow_all" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-    cidr_blocks = ["187.232.39.167/32"]
   }
 
   egress {
