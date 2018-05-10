@@ -1,4 +1,4 @@
-resource "aws_instance" "mbottini-instance-1" {
+resource "aws_instance" "mbottini-webserver-1" {
   ami = "ami-43a15f3e"
   instance_type = "t2.micro"
 
@@ -14,7 +14,7 @@ resource "aws_instance" "mbottini-instance-1" {
   }
 
   tags {
-    Name = "mbottini-instance-1"
+    Name = "mbottini-webserver-1"
   }
 
 }
@@ -44,5 +44,5 @@ resource "aws_security_group" "allow_all" {
 }
 
 output "public_ip" {
-  value = "${aws_instance.mbottini-instance-1.public_ip}"
+  value = "${aws_instance.mbottini-webserver-1.public_ip}"
 }
