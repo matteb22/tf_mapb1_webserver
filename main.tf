@@ -20,7 +20,7 @@ resource "aws_instance" "mbottini-webserver-1" {
   }
 
   # the public SSH key
-  key_name = "${aws_key_pair.mykeypair.key_name}"
+  key_name = "mbottini-softtek"
 
 }
 
