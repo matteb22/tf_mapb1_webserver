@@ -31,7 +31,7 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "us-east-1-public" {
   vpc_id = "${aws_vpc.main.id}"
   cidr_block = "172.10.10.0/25"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 }
 
 resource "aws_security_group" "allow_all" {
