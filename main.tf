@@ -2,7 +2,7 @@ resource "aws_instance" "mbottini-webserver-1" {
   ami = "ami-43a15f3e"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
-  #availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 
   provisioner "file" {
     source = "script.sh"
