@@ -35,6 +35,7 @@ resource "aws_instance" "mbottini-webserver-1" {
 
 resource "aws_vpc" "main" {
   cidr_block = "172.10.10.0/24"
+  enable_dns_hostnames = true
 }
 
 resource "aws_subnet" "us-east-1a" {
