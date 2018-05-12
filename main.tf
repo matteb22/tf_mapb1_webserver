@@ -3,7 +3,8 @@ resource "aws_instance" "mbottini-webserver-1" {
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   availability_zone = "us-east-1a"
-
+  subnet_id = "${aws_subnet.us-east-1a.id}"
+ 
   provisioner "file" {
     source = "script.sh"
     destination = "/tmp/script.sh"
@@ -28,7 +29,7 @@ resource "aws_vpc" "main" {
   cidr_block = "172.10.10.0/24"
 }
 
-resource "aws_subnet" "us-east-1-public" {
+resource "aws_subnet" "us-east-1a" {
   vpc_id = "${aws_vpc.main.id}"
   cidr_block = "172.10.10.0/25"
   availability_zone = "us-east-1a"
