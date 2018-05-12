@@ -4,6 +4,8 @@ resource "aws_instance" "mbottini-webserver-1" {
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   availability_zone = "us-east-1a"
   subnet_id = "${aws_subnet.us-east-1a.id}"
+  associate_public_ip_address = true
+  
  
   provisioner "file" {
     source = "script.sh"
