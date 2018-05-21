@@ -5,15 +5,19 @@ resource "aws_instance" "mbottini-webserver-1" {
   availability_zone = "us-east-1a"
   subnet_id = "${aws_subnet.us-east-1a.id}"
   associate_public_ip_address = true
-  
- 
+
+
   provisioner "file" {
     source = "script.sh"
     destination = "/tmp/script.sh"
-  
+
     connection {
       type     = "ssh"
       user     = "ubuntu"
+      host     = "${aws_instance.mbottini-webserver-1.public_ip}"
+      timeout  = "10m"
+      agent    = "false"
+
     }
   }
 
