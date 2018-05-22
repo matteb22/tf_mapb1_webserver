@@ -6,20 +6,18 @@ resource "aws_instance" "mbottini-webserver-1" {
   subnet_id = "${aws_subnet.us-east-1a.id}"
   associate_public_ip_address = true
 
+  connection {
+    type     = "ssh"
+    user     = "ubuntu"
+    private_key = "${file(var.my_private_key_path)}"
+    #host     = "${aws_instance.mbottini-webserver-1.public_ip}"
+    #timeout  = "10m"
+    #agent    = "false"
+  }
 
   provisioner "file" {
     source = "script.sh"
     destination = "/tmp/script.sh"
-
-    connection {
-      type     = "ssh"
-      user     = "ubuntu"
-      #host     = "${aws_instance.mbottini-webserver-1.public_ip}"
-      private_key = "${file(var.my_private_key_path)}"
-      #timeout  = "10m"
-      #agent    = "false"
-
-    }
   }
 
   provisioner "remote-exec" {
