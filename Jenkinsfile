@@ -5,6 +5,7 @@ pipeline {
   environment {
   AWS_ACCESS_KEY_ID = credentials('aws_access_key')
   AWS_SECRET_ACCESS_KEY = credentials('aws_secret_key')
+  TF_VAR_my_private_key_path = credentials('mbottini-softtek')
   }
   stages {
     stage('init') {
