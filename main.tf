@@ -24,7 +24,7 @@ resource "aws_instance" "mbottini-webserver-1" {
 
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/script.sh",
+      "sudo chmod +x /tmp/script.sh",
       "sudo /tmp/script.sh"
     ]
   }
