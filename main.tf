@@ -14,10 +14,10 @@ resource "aws_instance" "mbottini-webserver-1" {
     connection {
       type     = "ssh"
       user     = "ubuntu"
-      host     = "${aws_instance.mbottini-webserver-1.public_ip}"
+      #host     = "${aws_instance.mbottini-webserver-1.public_ip}"
       private_key = "${file(var.my_private_key_path)}"
-      timeout  = "10m"
-      agent    = "false"
+      #timeout  = "10m"
+      #agent    = "false"
 
     }
   }
