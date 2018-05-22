@@ -15,6 +15,7 @@ resource "aws_instance" "mbottini-webserver-1" {
       type     = "ssh"
       user     = "ubuntu"
       host     = "${aws_instance.mbottini-webserver-1.public_ip}"
+      private_key = "${file(var.private_key_path)}"
       timeout  = "10m"
       agent    = "false"
 
